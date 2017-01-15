@@ -2,7 +2,6 @@ import os
 from pyunpack import Archive
 
 for dirname, dirnames, filenames in os.walk('/run/media/leonardo/DOC3/merge'):
-#for dirname, dirnames, filenames in os.walk('/mkvtemp'):
     #extract subtitle
     for subdirname in dirnames:
         dir_path = os.path.join(dirname, subdirname)
@@ -10,7 +9,6 @@ for dirname, dirnames, filenames in os.walk('/run/media/leonardo/DOC3/merge'):
             if _file.endswith(".rar"):
                 file_path_absolute = os.path.join(dir_path, _file)
                 Archive(file_path_absolute).extractall(dir_path)
-                #print(_file)
 
     for subdirname in dirnames:
         dir_path = os.path.join(dirname, subdirname)
@@ -29,13 +27,13 @@ for dirname, dirnames, filenames in os.walk('/run/media/leonardo/DOC3/merge'):
                                           "leocbs/mkvmergetool ")
                     mkvmerge_cli = (docker_mkverge_cli + "mkvmerge -o " + file_converted + " " +
                                 _file + " " + _file.replace(".mkv", ".srt"))
-                    print(mkvmerge_cli)
+                    print("converting ", _file)
                     os.system(mkvmerge_cli)
-                    #print(os.system("docker run -ti --rm -v $(pwd)"+ dirname +":/mkvtemp"
-                    #        " leocbs/mkvmergetool ls"))
-                    #hd_path = 
-                    #cp = "cp " + os.path.join(dir_path, file_converted) + 
-                    #print
+                    hdd_path = "/run/media/leonardo/mypassportultra/series_new/"
+                    converted_absolute_path = os.path.join(dir_path, file_converted)
+                    cp_command = "cp " + converted_absolute_path + " " + hdd_path
+                    print("copying to hdd")
+                    os.system(cp_command)
                 except Exception as e:
                     print(e)
 
