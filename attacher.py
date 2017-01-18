@@ -1,7 +1,15 @@
 import os
 from pyunpack import Archive
+import argparse
 
-for dirname, dirnames, filenames in os.walk('/run/media/leonardo/DOC3/merge'):
+parser = argparse.ArgumentParser()
+parser.add_argument('--mkvsource', help='pass mkv folder source. ex:'
+        '/home/user/mkvs', required=True)
+parser.add_argument('--hddtest', help='path to external disk. ex:'
+        '/home/user/mkvs', required=True)
+args = parser.parse_args()
+
+for dirname, dirnames, filenames in os.walk(args.mkvsource):
     #extract subtitle
     for subdirname in dirnames:
         dir_path = os.path.join(dirname, subdirname)
@@ -29,12 +37,9 @@ for dirname, dirnames, filenames in os.walk('/run/media/leonardo/DOC3/merge'):
                                 _file + " " + _file.replace(".mkv", ".srt"))
                     print("converting ", _file)
                     os.system(mkvmerge_cli)
-                    hdd_path = "/run/media/leonardo/mypassportultra/series_new/"
                     converted_absolute_path = os.path.join(dir_path, file_converted)
-                    cp_command = "cp " + converted_absolute_path + " " + hdd_path
+                    cp_command = "cp " + converted_absolute_path + " " + args.hddtest
                     print("copying to hdd")
                     os.system(cp_command)
                 except Exception as e:
                     print(e)
-
-#mkvmerge -o Vikings.S04E15c.mkv Vikings.S04E15.mkv Vikings.S04E15.str        
