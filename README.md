@@ -36,4 +36,3 @@ Simple example to embed subtitle:
 If you wish use attacher.py, you will need some extra libs
 
     * pyunpack
-    * chardet
