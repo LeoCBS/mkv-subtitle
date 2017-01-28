@@ -31,3 +31,9 @@ Simple example to embed subtitle:
     docker run -ti --rm -v $(pwd):/mkvtemp leocbs/mkvmergetool mkvmerge -o Vikings.S04E15c.mkv Vikings.S04E15.mkv Vikings.S04E15.str
 
 
+## Python requirements
+
+If you wish use attacher.py, you will need some extra libs
+
+    * pyunpack
+    * chardet
