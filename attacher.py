@@ -5,7 +5,7 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument('--mkvsource', help='pass mkv folder source. ex:'
         '/home/user/mkvs', required=True)
-parser.add_argument('--hddtest', help='path to external disk. ex:'
+parser.add_argument('--hdddest', help='path to external disk. ex:'
         '/home/user/mkvs', required=True)
 args = parser.parse_args()
 
@@ -32,13 +32,13 @@ for dirname, dirnames, filenames in os.walk(args.mkvsource):
                     cp_temp = "mv " + subtitle_path + ".tmp " + subtitle_path
                     os.system(cp_temp)
                     docker_mkverge_cli = ("docker run -ti --rm -v "+ dir_path +":/mkvtemp "
-                                          "leocbs/mkvmergetool ")
+                                          "leocbs/mkvmergetool:1.0.0 ")
                     mkvmerge_cli = (docker_mkverge_cli + "mkvmerge -o " + file_converted + " " +
                                 _file + " " + _file.replace(".mkv", ".srt"))
                     print("converting ", _file)
                     os.system(mkvmerge_cli)
                     converted_absolute_path = os.path.join(dir_path, file_converted)
-                    cp_command = "cp " + converted_absolute_path + " " + args.hddtest
+                    cp_command = "cp " + converted_absolute_path + " " + args.hdddest
                     print("copying to hdd")
                     os.system(cp_command)
                 except Exception as e:
