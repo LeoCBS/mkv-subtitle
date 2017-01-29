@@ -13,6 +13,7 @@ args = parser.parse_args()
 
 def check_charset_utf(subtitle_abs_path):
     result = subprocess.check_output(["file", "-i", subtitle_abs_path])
+    print("charset check")
     print(result)
     if "utf-8" in result:
         return True
@@ -36,6 +37,7 @@ for dirname, dirnames, filenames in os.walk(args.mkvsource):
                     mkv_path_absolute = os.path.join(dir_path, _file)
                     file_converted = _file.replace(".mkv", "converted.mkv")
                     subtitle_path = mkv_path_absolute.replace(".mkv", ".srt")
+                    #if check_charset_utf(subtitle_path):
                     print("converting subtitle to iso-8859-1")
                     iconv = "iconv -t UTF-8 -f ISO-8859-1 {} > {}.tmp"
                     iconv = iconv.format(subtitle_path, subtitle_path)
