@@ -60,5 +60,5 @@ def attach(args):
                     except Exception as e:
                         print(e)
 
-#if __name__ == '__main__':
-#    unittest.main()
+if __name__ == '__main__':
+    attach(parse_args())
