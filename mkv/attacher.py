@@ -15,9 +15,15 @@ def parse_args():
 
 def check_charset_utf(subtitle_abs_path):
     result = subprocess.check_output(["file", "-i", subtitle_abs_path])
-    print("charset check")
-    print(result)
     if b"utf-8" in result or b"us-ascii" in result:
+        return True
+    return False
+
+
+def exist_subtitle(mkv_path):
+    print(mkv_path)
+    subtitle_path = mkv_path.replace(".mkv", ".srt")
+    if os.path.isfile(subtitle_path):
         return True
     return False
 
