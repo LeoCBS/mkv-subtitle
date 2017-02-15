@@ -1,3 +1,6 @@
+[![Build
+Status](https://travis-ci.org/LeoCBS/mkv-subtitle.svg?branch=master)](https://travis-ci.org/LeoCBS/mkv-subtitle)
+
 # mkv-subtitle
 
 Embed subtitle to mkv container using [mkvmerge](https://github.com/mbunkus/mkvtoolnix) tool version 5.8.0.

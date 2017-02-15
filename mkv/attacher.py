@@ -21,7 +21,6 @@ def check_charset_utf(subtitle_abs_path):
 
 
 def exist_subtitle(mkv_path):
-    print(mkv_path)
     subtitle_path = mkv_path.replace(".mkv", ".srt")
     if os.path.isfile(subtitle_path):
         return True
