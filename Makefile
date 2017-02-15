@@ -1,4 +1,4 @@
 export PYTHONPATH = $(shell pwd)
 
-test: 
+check: 
 	python ./tests/attacher_test.py
