@@ -44,13 +44,13 @@ def attach(args):
                         mkv_path_absolute = os.path.join(dir_path, _file)
                         file_converted = _file.replace(".mkv", "converted.mkv")
                         subtitle_path = mkv_path_absolute.replace(".mkv", ".srt")
-                        #if check_charset_utf(subtitle_path):
-                        print("converting subtitle to iso-8859-1")
-                        iconv = "iconv -t UTF-8 -f ISO-8859-1 {} > {}.tmp"
-                        iconv = iconv.format(subtitle_path, subtitle_path)
-                        os.system(iconv)
-                        cp_temp = "mv " + subtitle_path + ".tmp " + subtitle_path
-                        os.system(cp_temp)
+                        if check_charset_utf(subtitle_path):
+                            print("converting subtitle to iso-8859-1")
+                            iconv = "iconv -t UTF-8 -f ISO-8859-1 {} > {}.tmp"
+                            iconv = iconv.format(subtitle_path, subtitle_path)
+                            os.system(iconv)
+                            cp_temp = "mv " + subtitle_path + ".tmp " + subtitle_path
+                            os.system(cp_temp)
                         docker_mkverge_cli = ("docker run -ti --rm -v " + dir_path + ":/mkvtemp "
                                               "leocbs/mkvmergetool:1.0.0 ")
                         mkvmerge_cli = (docker_mkverge_cli + "mkvmerge -o " + file_converted + " " +
