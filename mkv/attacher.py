@@ -27,19 +27,18 @@ def exist_subtitle(mkv_path):
     return False
 
 
+def unrar_file(_file, dir_path):
+    file_path_absolute = os.path.join(dir_path, _file)
+    Archive(file_path_absolute).extractall(dir_path)
+
+
 def attach(args):
     for dirname, dirnames, filenames in os.walk(args.mkvsource):
-        # extract subtitle
         for subdirname in dirnames:
             dir_path = os.path.join(dirname, subdirname)
             for _file in os.listdir(dir_path):
                 if _file.endswith(".rar"):
-                    file_path_absolute = os.path.join(dir_path, _file)
-                    Archive(file_path_absolute).extractall(dir_path)
-
-        for subdirname in dirnames:
-            dir_path = os.path.join(dirname, subdirname)
-            for _file in os.listdir(dir_path):
+                    unrar_file(_file, dir_path)
                 if _file.endswith(".mkv"):
                     try:
                         mkv_path_absolute = os.path.join(dir_path, _file)
