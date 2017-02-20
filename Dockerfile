@@ -3,7 +3,7 @@ FROM ubuntu:14.04
 MAINTAINER leocborgess@gmail.com
 
 RUN apt-get update 
-RUN apt-get install -y build-essential autoconf \
+RUN apt-get install -y build-essential==11.6ubuntu6 autoconf \
     libogg-dev libvorbis-dev pkg-config zlib1g-dev \
     libboost-all-dev libcurl4-openssl-dev rake 
 

@@ -1,5 +1,7 @@
 [![Build
-Status](https://travis-ci.org/LeoCBS/mkv-subtitle.svg?branch=master)](https://travis-ci.org/LeoCBS/mkv-subtitle)
+Status](https://travis-ci.org/LeoCBS/mkv-subtitle.svg?branch=master)](https://travis-ci.org/LeoCBS/mkv-subtitle) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/0929cf8d82a94343bd46124008592b8e)](https://www.codacy.com/app/LeoCBS/mkv-subtitle?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=LeoCBS/mkv-subtitle&amp;utm_campaign=Badge_Grade)
+
+
 
 # mkv-subtitle
 
