@@ -33,7 +33,7 @@ def unrar_file(_file, dir_path):
 
 
 def attach(args):
-    for dirname, dirnames, filenames in os.walk(args.mkvsource):
+    for dirname, dirnames, _ in os.walk(args.mkvsource):
         for subdirname in dirnames:
             dir_path = os.path.join(dirname, subdirname)
             for _file in os.listdir(dir_path):
