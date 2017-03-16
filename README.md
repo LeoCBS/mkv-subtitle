@@ -34,8 +34,24 @@ Simple example to embed subtitle:
     docker run -ti --rm -v $(pwd):/mkvtemp leocbs/mkvmergetool mkvmerge -o Vikings.S04E15c.mkv Vikings.S04E15.mkv Vikings.S04E15.str
 
 
-## Virtual env
+## How to run attacher
 
+Attacher is one python script that extract subtitle from rar files and convert to
+iso charset.
+
+Attacher help:
+
+    mkv-subtitle|master ⇒ python /home/leonardo/projects/mkv-subtitle/mkv/attacher.py --help
+usage: attacher.py [-h] --mkvsource MKVSOURCE --hdddest HDDDEST
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --mkvsource MKVSOURCE
+                        pass mkv folder source. ex:/home/user/mkvs
+  --hdddest HDDDEST     path to external disk. ex:/home/user/mkvs
+
+
+     python attacher.py --mkvsource /run/media/leonardo/DOC3/merge --hdddest /run/media/leonardo/mypassportultra/series_new
 
 ## Python requirements
 
