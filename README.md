@@ -42,16 +42,17 @@ iso charset.
 Attacher help:
 
     mkv-subtitle|master ⇒ python /home/leonardo/projects/mkv-subtitle/mkv/attacher.py --help
-usage: attacher.py [-h] --mkvsource MKVSOURCE --hdddest HDDDEST
+    usage: attacher.py [-h] --mkvsource MKVSOURCE --hdddest HDDDEST
 
-optional arguments:
-  -h, --help            show this help message and exit
-  --mkvsource MKVSOURCE
-                        pass mkv folder source. ex:/home/user/mkvs
-  --hdddest HDDDEST     path to external disk. ex:/home/user/mkvs
+    optional arguments:
+          -h, --help             show this help message and exit
+          --mkvsource MKVSOURCE  pass mkv folder source. ex:/home/user/mkvs
+          --hdddest HDDDEST      path to external disk. ex:/home/user/mkvs
 
+attacher example:
 
-     python attacher.py --mkvsource /run/media/leonardo/DOC3/merge --hdddest /run/media/leonardo/mypassportultra/series_new
+     python attacher.py --mkvsource /run/media/leonardo/DOC3/merge \
+           --hdddest /run/media/leonardo/mypassportultra/series_new
 
 ## Python requirements
 
