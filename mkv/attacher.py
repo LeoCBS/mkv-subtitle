@@ -13,9 +13,9 @@ def parse_args():
     return parser.parse_args()
 
 
-def check_charset_utf(subtitle_abs_path):
+def check_charset_iso88591(subtitle_abs_path):
     result = subprocess.check_output(["file", "-i", subtitle_abs_path])
-    if b"utf-8" in result or b"us-ascii" in result:
+    if b"iso-8859-1" in result:
         return True
     return False
 
@@ -32,12 +32,16 @@ def unrar_file(_file, dir_path):
     Archive(file_path_absolute).extractall(dir_path)
 
 
+def _is_compress_file(_file):
+    return _file.endswith(".rar") or _file.endswith(".zip")
+
+
 def attach(args):
     for dirname, dirnames, _ in os.walk(args.mkvsource):
         for subdirname in dirnames:
             dir_path = os.path.join(dirname, subdirname)
             for _file in os.listdir(dir_path):
-                if _file.endswith(".rar"):
+                if _is_compress_file(_file):
                     unrar_file(_file, dir_path)
                 if _file.endswith(".mkv"):
                     try:
@@ -46,8 +50,8 @@ def attach(args):
                         subtitle_path = mkv_path_absolute.replace(
                                 ".mkv", ".srt"
                         )
-                        if check_charset_utf(subtitle_path):
-                            print("converting subtitle to iso-8859-1")
+                        if check_charset_iso88591(subtitle_path):
+                            print("converting subtitle to utf")
                             iconv = "iconv -t UTF-8 -f ISO-8859-1 {} > {}.tmp"
                             iconv = iconv.format(subtitle_path, subtitle_path)
                             os.system(iconv)
