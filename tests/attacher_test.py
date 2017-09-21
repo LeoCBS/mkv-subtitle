@@ -14,9 +14,9 @@ class AttacherTests(unittest.TestCase):
     def _join_absolute_path(self, path):
         return os.path.join(self.current_dir, path)
 
-    def test_should_check_utf_8_success(self):
-        abs_path = self._join_absolute_path('tests/resource_tests/utf.srt')
-        self.assertTrue(attacher.check_charset_utf(abs_path))
+    def test_should_check_iso88591_success(self):
+        abs_path = self._join_absolute_path('tests/resource_tests/iso88591.srt')
+        self.assertTrue(attacher.check_charset_iso88591(abs_path))
 
     def test_should_check_existing_subtitle(self):
         abs_path = self._join_absolute_path(
