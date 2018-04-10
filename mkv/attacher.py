@@ -67,7 +67,7 @@ def attach(args):
                                 dir_path,
                                 file_converted
                         )
-                        cp_command = "cp " + converted_absolute_path + " " + args.hdddest
+                        cp_command = "pv -p " + converted_absolute_path + " > " + args.hdddest + "/" + file_converted
                         print("copying to hdd")
                         os.system(cp_command)
                     except Exception as e:
